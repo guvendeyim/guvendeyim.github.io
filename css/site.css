@@ -73,11 +73,13 @@ footer nav { display: flex; flex-wrap: wrap; gap: 8px 20px; }
   .menu-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; border: 1px solid rgba(255,255,255,.55); border-radius: 10px; background: transparent; color: #fff; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; }
   .menu-dugme::before { content: ""; width: 18px; height: 12px; border-top: 2px solid #fff; border-bottom: 2px solid #fff; background: linear-gradient(#fff, #fff) center / 100% 2px no-repeat; }
   .menu-dugme[aria-expanded="true"] { background: rgba(255,255,255,.16); }
-  .ust nav { display: none; order: 3; width: 100%; flex-direction: column; gap: 0; margin-top: 12px; border-top: 1px solid rgba(255,255,255,.3); }
+  /* Açılan menü kırmızı başlıktan ayrı, açık zeminli bir panel olarak görünür. */
+  .ust nav { display: none; order: 3; width: 100%; flex-direction: column; gap: 0; margin: 12px 0 4px; padding: 4px 12px; background: var(--zemin); border-radius: 14px; box-shadow: 0 10px 28px rgba(0,0,0,.28); }
   .ust nav.acik { display: flex; }
-  .ust nav a, .ust nav a:not(.kal) { display: block; padding: 14px 4px; font-size: 17px; opacity: 1; border-bottom: 1px solid rgba(255,255,255,.18); }
+  .ust nav a, .ust nav a:not(.kal) { display: block; padding: 14px 8px; font-size: 17px; opacity: 1; color: var(--metin); border-bottom: 1px solid var(--cizgi); }
+  .ust nav a:hover { text-decoration: none; color: var(--kirmizi); }
   .ust nav a:last-child { border-bottom: 0; }
-  .ust nav a[aria-current="page"] { text-decoration: none; border-inline-start: 4px solid #fff; padding-inline-start: 12px; }
+  .ust nav a[aria-current="page"] { text-decoration: none; color: var(--kirmizi); font-weight: 700; border-inline-start: 4px solid var(--kirmizi); padding-inline-start: 12px; }
   /* Betik çalışmazsa menü açık kalır. */
   .betiksiz .ust nav { display: flex; }
   .betiksiz .menu-dugme { display: none; }
