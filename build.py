@@ -196,7 +196,7 @@ def render(name, title, description, body):
 
     nav = "".join(link(href, label) for href, label in MENU)
     return f"""<!doctype html>
-<html lang="tr">
+<html lang="tr" class="betiksiz">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -213,7 +213,8 @@ def render(name, title, description, body):
 <body>
 <header class="ust"><div class="ic">
   <a class="marka" href="index.html"><img src="img/icon.png" alt=""><strong>Güvendeyim</strong></a>
-  <nav aria-label="Ana menü">{nav}</nav>
+  <button class="menu-dugme" type="button" aria-expanded="false" aria-controls="ana-menu">Menü</button>
+  <nav id="ana-menu" aria-label="Ana menü">{nav}</nav>
 </div></header>
 {body}
 <footer><div class="ic">
@@ -224,6 +225,16 @@ def render(name, title, description, body):
     <a href="{SUGGESTIONS_URL}">Buluşma noktası önerileri</a>
   </nav>
 </div></footer>
+<script>
+document.documentElement.classList.remove("betiksiz");
+(function () {{
+  var dugme = document.querySelector(".menu-dugme"), menu = document.getElementById("ana-menu");
+  dugme.addEventListener("click", function () {{
+    var acik = menu.classList.toggle("acik");
+    dugme.setAttribute("aria-expanded", acik);
+  }});
+}})();
+</script>
 </body>
 </html>
 """

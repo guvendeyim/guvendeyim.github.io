@@ -67,10 +67,20 @@ footer nav { display: flex; flex-wrap: wrap; gap: 8px 20px; }
 /* Çok sayfalı düzen */
 .ust nav a[aria-current="page"] { opacity: 1; font-weight: 700; text-decoration: underline; text-underline-offset: 6px; }
 .ust .marka { display: flex; align-items: center; gap: 12px; flex: 1; color: #fff; text-decoration: none; }
+.menu-dugme { display: none; }
 @media (max-width: 860px) {
-  .ust .ic { flex-wrap: wrap; }
-  .ust nav { order: 3; width: 100%; overflow-x: auto; gap: 18px; padding-bottom: 4px; white-space: nowrap; }
-  .ust nav a:not(.kal) { display: inline; }
+  .ust .ic { flex-wrap: wrap; row-gap: 0; }
+  .menu-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; border: 1px solid rgba(255,255,255,.55); border-radius: 10px; background: transparent; color: #fff; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; }
+  .menu-dugme::before { content: ""; width: 18px; height: 12px; border-top: 2px solid #fff; border-bottom: 2px solid #fff; background: linear-gradient(#fff, #fff) center / 100% 2px no-repeat; }
+  .menu-dugme[aria-expanded="true"] { background: rgba(255,255,255,.16); }
+  .ust nav { display: none; order: 3; width: 100%; flex-direction: column; gap: 0; margin-top: 12px; border-top: 1px solid rgba(255,255,255,.3); }
+  .ust nav.acik { display: flex; }
+  .ust nav a, .ust nav a:not(.kal) { display: block; padding: 14px 4px; font-size: 17px; opacity: 1; border-bottom: 1px solid rgba(255,255,255,.18); }
+  .ust nav a:last-child { border-bottom: 0; }
+  .ust nav a[aria-current="page"] { text-decoration: none; border-inline-start: 4px solid #fff; padding-inline-start: 12px; }
+  /* Betik çalışmazsa menü açık kalır. */
+  .betiksiz .ust nav { display: flex; }
+  .betiksiz .menu-dugme { display: none; }
 }
 .sayfa-basi { background: var(--kirmizi); color: #fff; padding: 28px 0 40px; }
 .sayfa-basi h1 { font-size: clamp(30px, 5vw, 44px); letter-spacing: -.02em; }

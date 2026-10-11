@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="tr">
+<html lang="tr" class="betiksiz">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +16,8 @@
 <body>
 <header class="ust"><div class="ic">
   <a class="marka" href="index.html"><img src="img/icon.png" alt=""><strong>Güvendeyim</strong></a>
-  <nav aria-label="Ana menü"><a href="index.html">Ana sayfa</a><a href="ozellikler.html">Özellikler</a><a href="nasil-calisir.html">Nasıl çalışır</a><a href="bulusma-noktasi.html">Buluşma noktası</a><a href="afete-hazirlik.html">Afete hazırlık</a><a href="hakkinda.html" aria-current="page">Hakkında</a><a href="indir.html">İndir</a></nav>
+  <button class="menu-dugme" type="button" aria-expanded="false" aria-controls="ana-menu">Menü</button>
+  <nav id="ana-menu" aria-label="Ana menü"><a href="index.html">Ana sayfa</a><a href="ozellikler.html">Özellikler</a><a href="nasil-calisir.html">Nasıl çalışır</a><a href="bulusma-noktasi.html">Buluşma noktası</a><a href="afete-hazirlik.html">Afete hazırlık</a><a href="hakkinda.html" aria-current="page">Hakkında</a><a href="indir.html">İndir</a></nav>
 </div></header>
 <div class="sayfa-basi"><div class="ic"><h1>Hakkında</h1><p>Güvendeyim, AKUT Arama Kurtarma Derneği tarafından geliştirilir.</p></div></div>
 <main><section class="akut"><div class="ic iki">
@@ -41,5 +42,15 @@
     <a href="https://guvendeyim.org.tr/bulusma-noktalari/">Buluşma noktası önerileri</a>
   </nav>
 </div></footer>
+<script>
+document.documentElement.classList.remove("betiksiz");
+(function () {
+  var dugme = document.querySelector(".menu-dugme"), menu = document.getElementById("ana-menu");
+  dugme.addEventListener("click", function () {
+    var acik = menu.classList.toggle("acik");
+    dugme.setAttribute("aria-expanded", acik);
+  });
+})();
+</script>
 </body>
 </html>
