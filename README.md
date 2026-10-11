@@ -5,9 +5,12 @@ Güvendeyim uygulamasının tanıtım sitesi. Yedi sayfa, dış bağımlılık y
 - Yayın: https://guvendeyim.github.io/
 - Buluşma noktası önerileri ayrı depodadır: https://github.com/guvendeyim/bulusma-noktalari
 
-## Özel alan adı (guvendeyim.org.tr)
+## Özel alan adı
 
-Alan adı bağlanınca GitHub, `guvendeyim.github.io/...` adreslerini `guvendeyim.org.tr/...` adresine
-yönlendirir; buna `bulusma-noktalari` verisi de dahildir. Uygulamalar veriyi
-`https://guvendeyim.github.io/bulusma-noktalari/` adresinden indirdiği için, DNS kayıtları hazır
-olmadan `CNAME` dosyası eklenmemelidir; aksi halde uygulamalardaki öneri listesi boş gelir.
+Site `guvendeyim.org.tr` adresinde yayınlanır (`CNAME` dosyası). DNS Cloudflare'dedir: kök alan adı ve
+`www`, `guvendeyim.github.io` adresine CNAME'dir ve proxy kapalıdır (yalnız DNS); GitHub'ın HTTPS
+sertifikası çıkarabilmesi için böyle kalmalıdır.
+
+GitHub, `guvendeyim.github.io/...` adreslerini `guvendeyim.org.tr/...` adresine yönlendirir; buna
+`bulusma-noktalari` verisi de dahildir. Uygulamalar veriyi bu yönlendirme üzerinden indirir; DNS
+kayıtları bozulursa uygulamalardaki öneri listesi boş gelir.

@@ -19,7 +19,7 @@ STORES = """<div class="magazalar">
   <a class="magaza" href="https://appgallery.huawei.com/app/C102224999"><small>Huawei için</small><b>AppGallery</b></a>
 </div>"""
 
-SUGGESTIONS_URL = "https://guvendeyim.github.io/bulusma-noktalari/"
+SUGGESTIONS_URL = "https://guvendeyim.org.tr/bulusma-noktalari/"
 
 
 def card(title, text, link=None, label=None):
@@ -205,7 +205,7 @@ def render(name, title, description, body):
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{description}">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://guvendeyim.github.io/img/icon.png">
+<meta property="og:image" content="https://guvendeyim.org.tr/img/icon.png">
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="stylesheet" href="css/site.css">
