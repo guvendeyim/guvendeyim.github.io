@@ -5,189 +5,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Güvendeyim – Afet anında tek tuşla haber verin</title>
 <meta name="description" content="AKUT'un ücretsiz Güvendeyim uygulaması: afet ve acil durumda tek tuşla yakınlarınıza konumunuzu SMS ile bildirin.">
-<meta property="og:title" content="Güvendeyim">
-<meta property="og:description" content="Afet ve acil durumda tek tuşla yakınlarınıza konumunuzu bildirin. AKUT'un ücretsiz uygulaması.">
+<meta property="og:title" content="Güvendeyim – Afet anında tek tuşla haber verin">
+<meta property="og:description" content="AKUT'un ücretsiz Güvendeyim uygulaması: afet ve acil durumda tek tuşla yakınlarınıza konumunuzu SMS ile bildirin.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://guvendeyim.github.io/img/icon.png">
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-<style>
-  :root {
-    --kirmizi: #CE0539; --kirmizi-koyu: #A3042D; --yesil: #1E8E3E;
-    --metin: #1b1b1f; --soluk: #5f6068; --zemin: #ffffff; --kart: #f5f5f7; --cizgi: #e2e2e6;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root { --metin: #f1f1f3; --soluk: #a5a6ad; --zemin: #131316; --kart: #1e1e22; --cizgi: #34343a; --yesil: #4CC26B; }
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin: 0; font: 17px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--metin); background: var(--zemin); }
-  a { color: var(--kirmizi); }
-  .ic { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
-  h1, h2, h3 { line-height: 1.2; margin: 0; text-wrap: balance; }
-  h2 { font-size: clamp(26px, 4vw, 34px); margin-bottom: 8px; }
-  section { padding: 64px 0; }
-  .alt-baslik { color: var(--soluk); margin: 0 0 32px; max-width: 62ch; }
-
-  header.ust { background: var(--kirmizi); color: #fff; }
-  .ust .ic { display: flex; align-items: center; gap: 12px; padding-top: 14px; padding-bottom: 14px; }
-  .ust img { width: 36px; height: 36px; border-radius: 8px; }
-  .ust strong { font-size: 19px; flex: 1; }
-  .ust nav { display: flex; gap: 20px; }
-  .ust nav a { color: #fff; text-decoration: none; font-size: 15px; opacity: .92; }
-  .ust nav a:hover { opacity: 1; text-decoration: underline; }
-  @media (max-width: 620px) { .ust nav a:not(.kal) { display: none; } }
-
-  .kahraman { background: var(--kirmizi); color: #fff; padding: 40px 0 72px; }
-  .kahraman .ic { display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: center; }
-  .kahraman h1 { font-size: clamp(34px, 6vw, 56px); letter-spacing: -.02em; }
-  .kahraman p { font-size: 19px; margin: 18px 0 28px; max-width: 46ch; opacity: .95; }
-  .kahraman .gorsel img { width: 100%; max-width: 320px; border-radius: 22%; display: block; margin: 0 auto; box-shadow: 0 24px 60px rgba(0,0,0,.35); }
-  @media (max-width: 760px) { .kahraman .ic { grid-template-columns: 1fr; } .kahraman .gorsel { order: -1; } .kahraman .gorsel img { max-width: 180px; } }
-
-  .magazalar { display: flex; flex-wrap: wrap; gap: 12px; }
-  .magaza { display: inline-flex; flex-direction: column; justify-content: center; min-width: 168px; padding: 10px 18px; border-radius: 12px; text-decoration: none; background: #fff; color: var(--kirmizi-koyu); line-height: 1.25; }
-  .magaza small { font-size: 12px; opacity: .75; }
-  .magaza b { font-size: 17px; }
-  .magaza:hover { background: #ffe9ee; }
-  .indir .magaza { background: var(--kirmizi); color: #fff; }
-  .indir .magaza:hover { background: var(--kirmizi-koyu); }
-
-  .izgara { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
-  .kart { background: var(--kart); border-radius: 16px; padding: 22px; }
-  .kart h3 { font-size: 19px; margin-bottom: 8px; }
-  .kart p { margin: 0; color: var(--soluk); }
-  .etiket { display: inline-block; font-size: 12px; font-weight: 600; color: #fff; background: var(--yesil); border-radius: 999px; padding: 2px 10px; margin-inline-start: 6px; vertical-align: middle; }
-
-  .gri { background: var(--kart); }
-  .gri .kart { background: var(--zemin); }
-  ol.adimlar { list-style: none; counter-reset: adim; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-  ol.adimlar li { counter-increment: adim; background: var(--zemin); border-radius: 16px; padding: 22px; }
-  ol.adimlar li::before { content: counter(adim); display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--kirmizi); color: #fff; font-weight: 700; margin-bottom: 12px; }
-  ol.adimlar h3 { font-size: 18px; margin-bottom: 6px; }
-  ol.adimlar p { margin: 0; color: var(--soluk); }
-  .uyari { margin-top: 24px; border-inline-start: 4px solid var(--kirmizi); background: var(--zemin); border-radius: 8px; padding: 14px 16px; color: var(--soluk); }
-
-  .iki { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
-  @media (max-width: 760px) { .iki { grid-template-columns: 1fr; } }
-  .dugme { display: inline-block; margin-top: 16px; padding: 12px 20px; border-radius: 12px; background: var(--kirmizi); color: #fff; text-decoration: none; font-weight: 600; }
-  .dugme:hover { background: var(--kirmizi-koyu); }
-  .akut img { max-width: 260px; width: 100%; background: #fff; border-radius: 12px; padding: 16px; }
-
-  footer { border-top: 1px solid var(--cizgi); padding: 28px 0 40px; color: var(--soluk); font-size: 15px; }
-  footer .ic { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
-  footer nav { display: flex; flex-wrap: wrap; gap: 8px 20px; }
-</style>
+<link rel="stylesheet" href="css/site.css">
 </head>
 <body>
-
-<header class="ust">
-  <div class="ic">
-    <img src="img/icon.png" alt="">
-    <strong>Güvendeyim</strong>
-    <nav>
-      <a href="#ozellikler">Özellikler</a>
-      <a href="#nasil">Nasıl çalışır</a>
-      <a href="#bulusma">Buluşma noktaları</a>
-      <a href="#indir" class="kal">İndir</a>
-    </nav>
-  </div>
-</header>
-
-<div class="kahraman">
-  <div class="ic">
-    <div>
-      <h1>Afet anında tek tuşla “Güvendeyim” deyin.</h1>
-      <p>Güvendeyim, acil durumda yakınlarınıza nerede olduğunuzu bildirir: tek tuşla, konumunuzla birlikte, en fazla 10 kişiye SMS gider. AKUT tarafından geliştirilmiştir ve ücretsizdir.</p>
-      <div class="magazalar">
-        <a class="magaza" href="https://apps.apple.com/tr/app/id1488896334"><small>iPhone için</small><b>App Store</b></a>
-        <a class="magaza" href="https://play.google.com/store/apps/details?id=genel.akut.guvendeyim"><small>Android için</small><b>Google Play</b></a>
-        <a class="magaza" href="https://appgallery.huawei.com/app/C102224999"><small>Huawei için</small><b>AppGallery</b></a>
-      </div>
-    </div>
-    <div class="gorsel"><img src="img/icon.png" alt="Güvendeyim uygulama simgesi: birbirini tutan iki el"></div>
-  </div>
-</div>
-
-<main>
-<section id="ozellikler">
-  <div class="ic">
-    <h2>Neler yapar?</h2>
-    <p class="alt-baslik">Afet ve acil durumda en çok ihtiyaç duyulan şeyi, haber vermeyi, mümkün olduğunca basit hale getirir.</p>
-    <div class="izgara">
-      <div class="kart"><h3>Tek tuşla haber</h3><p>Ana ekrandaki düğmeye basın; adınız, telefonunuz, konumunuz ve harita bağlantısı kayıtlı kişilerinize SMS olarak gider.</p></div>
-      <div class="kart"><h3>10 acil kişi</h3><p>Mesajın gideceği en fazla 10 kişiyi önceden rehberinizden seçersiniz. Acil anda kimseyi aramanız gerekmez.</p></div>
-      <div class="kart"><h3>Düdük</h3><p>Sesinizi duyuramadığınızda düdük düğmesiyle bulunduğunuz yeri belli edebilirsiniz.</p></div>
-      <div class="kart"><h3>Temel bilgiler</h3><p>Deprem, sel ve yangında ne yapılır, acil durum çantasına ne konur: internet olmadan da okunabilen kısa rehberler.</p></div>
-      <div class="kart"><h3>Buluşma noktaları <span class="etiket">Yeni</span></h3><p>Ailenizle bir asıl, bir yedek buluşma noktası belirleyin ve tek bağlantıyla paylaşın. Yeni sürümle geliyor.</p></div>
-      <div class="kart"><h3>Altı dil</h3><p>Türkçe, İngilizce, Almanca, Azerbaycan Türkçesi, Farsça ve Arapça. Acil numaralar seçtiğiniz ülkeye göre gösterilir.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="nasil" class="gri">
-  <div class="ic">
-    <h2>Nasıl çalışır?</h2>
-    <p class="alt-baslik">Kurulum birkaç dakika sürer ve bir kez yapılır.</p>
-    <ol class="adimlar">
-      <li><h3>Ayarları açın</h3><p>Adınızı, telefon numaranızı ve en fazla 10 acil kişiyi ekleyin.</p></li>
-      <li><h3>Kaydedin</h3><p>Bilgileriniz kaydedilince ana ekrandaki düğme yeşile döner.</p></li>
-      <li><h3>Acil durumda basın</h3><p>Yeşil düğmeye basın; uygulama konumunuzu tüm kişilerinize SMS ile gönderir.</p></li>
-      <li><h3>Yakınlarınız görür</h3><p>Kişileriniz adınızı, numaranızı, konumunuzu ve harita bağlantısını içeren mesajı alır.</p></li>
-    </ol>
-    <p class="uyari">Kesin konum için uygulamaya konum izni verin. Telefonunuz uzun süre kullanılmayan uygulamaları uyutabilir ya da kaldırabilir; Güvendeyim için bu seçeneği kapatın ve uygulamayı ara sıra açın.</p>
-  </div>
-</section>
-
-<section id="bulusma">
-  <div class="ic iki">
-    <div>
-      <h2>Buluşma noktanızı şimdiden belirleyin</h2>
-      <p>Afet sonrası telefonlar çalışmayabilir. Ailenizle önceden iki yer kararlaştırın: biri asıl, biri yedek. Açık, binalardan uzak ve herkesin yürüyerek ulaşabileceği bir yer seçin.</p>
-      <p>Türkiye genelinde park, meydan, pazar yeri, spor sahası ve oyun alanlarından oluşan öneri listesine göz atabilirsiniz. Liste OpenStreetMap verisinden üretilmiş bir öneridir; resmi bir belirleme değildir.</p>
-      <a class="dugme" href="https://guvendeyim.github.io/bulusma-noktalari/">Yakınınızdaki açık alanlara bakın</a>
-    </div>
-    <div class="izgara">
-      <div class="kart"><h3>1 · Asıl nokta</h3><p>Evinize en yakın, herkesin bildiği açık alan.</p></div>
-      <div class="kart"><h3>2 · Yedek nokta</h3><p>İlkine ulaşılamazsa gidilecek, farklı yöndeki ikinci yer.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="gri akut">
-  <div class="ic iki">
-    <div>
-      <h2>AKUT hakkında</h2>
-      <p>AKUT Arama Kurtarma Derneği, 1996'da kurulan, kâr amacı gütmeyen ve tamamen gönüllülerden oluşan bir kuruluştur. Doğal afet ve kazalarda arama kurtarma operasyonları yürütür.</p>
-      <a class="dugme" href="https://www.akut.org.tr">akut.org.tr</a>
-    </div>
-    <div><img src="img/akut.png" alt="AKUT Arama Kurtarma Derneği logosu"></div>
-  </div>
-</section>
-
-<section id="indir" class="indir">
-  <div class="ic">
-    <h2>Güvendeyim'i indirin</h2>
-    <p class="alt-baslik">Ücretsizdir, üyelik ya da giriş gerektirmez. Afetten önce kurun ve kişilerinizi ekleyin.</p>
+<header class="ust"><div class="ic">
+  <a class="marka" href="index.html"><img src="img/icon.png" alt=""><strong>Güvendeyim</strong></a>
+  <nav aria-label="Ana menü"><a href="index.html" aria-current="page">Ana sayfa</a><a href="ozellikler.html">Özellikler</a><a href="nasil-calisir.html">Nasıl çalışır</a><a href="bulusma-noktasi.html">Buluşma noktası</a><a href="afete-hazirlik.html">Afete hazırlık</a><a href="hakkinda.html">Hakkında</a><a href="indir.html">İndir</a></nav>
+</div></header>
+<div class="kahraman"><div class="ic">
+  <div>
+    <h1>Afet anında tek tuşla “Güvendeyim” deyin.</h1>
+    <p>Güvendeyim, acil durumda yakınlarınıza nerede olduğunuzu bildirir: tek tuşla, konumunuzla birlikte, en fazla 10 kişiye SMS gider. AKUT tarafından geliştirilmiştir ve ücretsizdir.</p>
     <div class="magazalar">
-      <a class="magaza" href="https://apps.apple.com/tr/app/id1488896334"><small>iPhone için</small><b>App Store</b></a>
-      <a class="magaza" href="https://play.google.com/store/apps/details?id=genel.akut.guvendeyim"><small>Android için</small><b>Google Play</b></a>
-      <a class="magaza" href="https://appgallery.huawei.com/app/C102224999"><small>Huawei için</small><b>AppGallery</b></a>
-    </div>
+  <a class="magaza" href="https://apps.apple.com/tr/app/id1488896334"><small>iPhone için</small><b>App Store</b></a>
+  <a class="magaza" href="https://play.google.com/store/apps/details?id=genel.akut.guvendeyim"><small>Android için</small><b>Google Play</b></a>
+  <a class="magaza" href="https://appgallery.huawei.com/app/C102224999"><small>Huawei için</small><b>AppGallery</b></a>
+</div>
   </div>
-</section>
-</main>
-
-<footer>
-  <div class="ic">
-    <span>© AKUT Arama Kurtarma Derneği</span>
-    <nav>
-      <a href="https://www.akut.org.tr/guvendeyim-uygulamasi-gizlilik-politikasi">Gizlilik politikası</a>
-      <a href="mailto:guvendeyim@akut.org.tr">guvendeyim@akut.org.tr</a>
-      <a href="https://guvendeyim.github.io/bulusma-noktalari/">Buluşma noktası önerileri</a>
-    </nav>
+  <div class="gorsel"><img src="img/icon.png" alt="Güvendeyim uygulama simgesi: birbirini tutan iki el"></div>
+</div></div>
+<main><section><div class="ic">
+  <div class="izgara">
+    <div class="kart"><h3>Neler yapar?</h3><p>Tek tuşla konumlu SMS, düdük, bildirimler ve internet olmadan okunabilen afet rehberleri.</p><a class="devam" href="ozellikler.html">Özellikler →</a></div>
+    <div class="kart"><h3>Nasıl çalışır?</h3><p>Kurulum birkaç dakika sürer: adınızı ve en fazla 10 acil kişiyi ekleyin, düğme yeşile dönsün.</p><a class="devam" href="nasil-calisir.html">Adım adım →</a></div>
+    <div class="kart"><h3>Buluşma noktası</h3><p>Ailenizle bir asıl, bir yedek buluşma noktası belirleyin ve tek bağlantıyla paylaşın.</p><a class="devam" href="bulusma-noktasi.html">Nasıl seçilir →</a></div>
+    <div class="kart"><h3>Afete hazırlık</h3><p>Deprem, sel ve yangında ne yapılır, acil durum çantasına ne konur.</p><a class="devam" href="afete-hazirlik.html">Rehberler →</a></div>
   </div>
-</footer>
-
+</div></section></main>
+<footer><div class="ic">
+  <span>© AKUT Arama Kurtarma Derneği</span>
+  <nav aria-label="Alt menü">
+    <a href="https://www.akut.org.tr/guvendeyim-uygulamasi-gizlilik-politikasi">Gizlilik politikası</a>
+    <a href="mailto:guvendeyim@akut.org.tr">guvendeyim@akut.org.tr</a>
+    <a href="https://guvendeyim.github.io/bulusma-noktalari/">Buluşma noktası önerileri</a>
+  </nav>
+</div></footer>
 </body>
 </html>

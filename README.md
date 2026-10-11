@@ -1,6 +1,6 @@
 # guvendeyim.github.io
 
-Güvendeyim uygulamasının tanıtım sitesi. Tek sayfa, bağımlılık yok: `index.html` ve `img/`.
+Güvendeyim uygulamasının tanıtım sitesi. Yedi sayfa, dış bağımlılık yok. Sayfalar `python3 build.py` ile üretilir; içerik ve menü `build.py` içindedir, biçim `css/site.css` dosyasındadır. Üretilen `*.html` dosyaları elle düzenlenmez.
 
 - Yayın: https://guvendeyim.github.io/
 - Buluşma noktası önerileri ayrı depodadır: https://github.com/guvendeyim/bulusma-noktalari
