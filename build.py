@@ -3,6 +3,13 @@
 Üst menü ve alt bilgi tek yerde durur; sayfa içerikleri aşağıdaki PAGES sözlüğündedir.
 Üretilen *.html dosyaları elle düzenlenmez.
 """
+import hashlib
+
+# Tarayıcı eski biçim dosyasını önbellekten kullanmasın diye bağlantıya dosyanın özeti eklenir;
+# css/site.css değişince sürüm kendiliğinden değişir.
+with open("css/site.css", "rb") as _css:
+    CSS_VERSION = hashlib.sha256(_css.read()).hexdigest()[:8]
+
 MENU = [
     ("index.html", "Ana sayfa"),
     ("ozellikler.html", "Özellikler"),
@@ -208,7 +215,7 @@ def render(name, title, description, body):
 <meta property="og:image" content="https://guvendeyim.org.tr/img/icon.png">
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/site.css?v={CSS_VERSION}">
 </head>
 <body>
 <header class="ust"><div class="ic">
