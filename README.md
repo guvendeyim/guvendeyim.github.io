@@ -14,3 +14,10 @@ sertifikası çıkarabilmesi için böyle kalmalıdır.
 GitHub, `guvendeyim.github.io/...` ve `guvendeyim.org.tr/...` adreslerini `www.guvendeyim.org.tr/...` adresine yönlendirir; buna
 `bulusma-noktalari` verisi de dahildir. Uygulamalar veriyi bu yönlendirme üzerinden indirir; DNS
 kayıtları bozulursa uygulamalardaki öneri listesi boş gelir.
+
+## Buluşma noktası önerileri sayfası
+
+`www.guvendeyim.org.tr/bulusma-noktalari/` ayrı bir depodadır (`guvendeyim/bulusma-noktalari`) ama sitenin parçasıdır;
+aynı üst menü, alt bilgi ve `css/site.css` ile üretilir. `build.py`, o depo bu deponun yanında duruyorsa
+(`../bulusma-noktalari`) `sayfa/govde.html` dosyasını okuyup `docs/index.html` dosyasını yazar. Menü ya da düzen
+değişince iki depo da commit edilip gönderilmelidir. Sayfaya özgü biçimler `css/site.css` sonundadır.

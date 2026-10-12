@@ -4,6 +4,7 @@
 Üretilen *.html dosyaları elle düzenlenmez.
 """
 import hashlib
+import os
 
 # Tarayıcı eski biçim dosyasını önbellekten kullanmasın diye bağlantıya dosyanın özeti eklenir;
 # css/site.css değişince sürüm kendiliğinden değişir.
@@ -196,10 +197,11 @@ PAGES["indir.html"] = ("İndir – Güvendeyim",
 </div></div></section></main>""")
 
 
-def render(name, title, description, body):
+def render(name, title, description, body, base="", head=""):
+    """base: bağlantı öneki; site kökü dışındaki sayfalar için "/". head: sayfaya özgü <head> etiketleri."""
     def link(href, label):
         current = ' aria-current="page"' if href == name else ""
-        return f'<a href="{href}"{current}>{label}</a>'
+        return f'<a href="{base}{href}"{current}>{label}</a>'
 
     nav = "".join(link(href, label) for href, label in MENU)
     return f"""<!doctype html>
@@ -213,13 +215,13 @@ def render(name, title, description, body):
 <meta property="og:description" content="{description}">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://www.guvendeyim.org.tr/img/icon.png">
-<link rel="icon" type="image/png" href="img/favicon.png">
-<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-<link rel="stylesheet" href="css/site.css?v={CSS_VERSION}">
-</head>
+<link rel="icon" type="image/png" href="{base}img/favicon.png">
+<link rel="apple-touch-icon" href="{base}img/apple-touch-icon.png">
+<link rel="stylesheet" href="{base}css/site.css?v={CSS_VERSION}">
+{head}</head>
 <body>
 <header class="ust"><div class="ic">
-  <a class="marka" href="index.html"><img src="img/icon.png" alt=""><strong>Güvendeyim</strong></a>
+  <a class="marka" href="{base}index.html"><img src="{base}img/icon.png" alt=""><strong>Güvendeyim</strong></a>
   <button class="menu-dugme" type="button" aria-expanded="false" aria-controls="ana-menu">Menü</button>
   <nav id="ana-menu" aria-label="Ana menü">{nav}</nav>
 </div></header>
@@ -247,8 +249,32 @@ document.documentElement.classList.remove("betiksiz");
 """
 
 
+# Buluşma noktası önerileri ayrı bir depoda (guvendeyim/bulusma-noktalari) durur ama sitenin parçasıdır:
+# aynı menü ve düzenle üretilir. Gövdesi o depodaki sayfa/govde.html dosyasıdır; depo bu deponun
+# yanında duruyorsa docs/index.html oraya yazılır.
+SUGGESTIONS_REPO = os.path.join("..", "bulusma-noktalari")
+SUGGESTIONS_HEAD = '<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">\n'
+
+
+def write_suggestions_page():
+    source = os.path.join(SUGGESTIONS_REPO, "sayfa", "govde.html")
+    if not os.path.exists(source):
+        print("atlandı (depo yanında değil):", source)
+        return
+    with open(source, encoding="utf-8") as f:
+        body = f.read()
+    target = os.path.join(SUGGESTIONS_REPO, "docs", "index.html")
+    with open(target, "w", encoding="utf-8") as f:
+        f.write(render("bulusma-noktasi.html", "Buluşma noktası önerileri — Güvendeyim",
+                       "Afet sonrası ailenizle buluşabileceğiniz açık alanlar: il ve ilçeye göre park, meydan, "
+                       "pazar yeri, spor sahası ve oyun alanı önerileri.",
+                       body, base="/", head=SUGGESTIONS_HEAD))
+    print("yazıldı:", target)
+
+
 if __name__ == "__main__":
     for name, (title, description, body) in PAGES.items():
         with open(name, "w", encoding="utf-8") as f:
             f.write(render(name, title, description, body))
         print("yazıldı:", name)
+    write_suggestions_page()

@@ -96,3 +96,15 @@ a.devam:hover { text-decoration: underline; }
 .acil { display: inline-block; background: var(--kirmizi); color: #fff; font-weight: 700; border-radius: 10px; padding: 8px 16px; margin-bottom: 20px; }
 .metin { max-width: 68ch; }
 .metin p { margin: 0 0 14px; }
+
+/* Buluşma noktası önerileri sayfası (bulusma-noktalari deposu) */
+.secim { display: flex; flex-wrap: wrap; gap: 12px; }
+.secim select { flex: 1 1 200px; min-height: 48px; padding: 10px 12px; font: inherit; color: inherit; background: var(--kart); border: 1px solid var(--cizgi); border-radius: 12px; }
+#harita { height: min(60vh, 460px); margin: 20px 0 12px; border-radius: 16px; border: 1px solid var(--cizgi); }
+.durum { color: var(--soluk); margin: 0 0 8px; }
+.oneriler { list-style: none; margin: 0; padding: 0; }
+.oneriler li { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--cizgi); }
+.oneriler small { display: block; color: var(--soluk); }
+.oneriler a { flex: none; font-weight: 600; text-decoration: none; }
+.oneriler a:hover { text-decoration: underline; }
+.kaynak { margin: 20px 0 0; color: var(--soluk); font-size: 15px; }
