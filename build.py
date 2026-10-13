@@ -169,27 +169,27 @@ PAGES["afete-hazirlik.html"] = ("Afete hazırlık – Güvendeyim",
 
 PAGES["hakkinda.html"] = ("Hakkında – Güvendeyim",
     "Güvendeyim, AKUT Arama Kurtarma Derneği tarafından geliştirilen ücretsiz bir acil durum uygulamasıdır.",
-    page_head("Hakkında", "Güvendeyim, AKUT Arama Kurtarma Derneği tarafından geliştirilir.") + """
+    page_head("Hakkında", "Güvendeyim, AKUT Arama Kurtarma Derneği tarafından geliştirilmektedir.") + """
 <main><section class="akut"><div class="ic iki">
   <div class="metin">
     <h2>AKUT</h2>
-    <p>AKUT Arama Kurtarma Derneği, 1996 yılında Türkiye'de kurulan, kâr amacı gütmeyen bir kuruluştur. Tamamen gönüllülerden oluşan dernek, doğal afet ve kazalarda arama kurtarma operasyonları yürütür.</p>
-    <p>AKUT uzman gönüllüler yetiştirir; ilk yardım, dağ kurtarma, su kurtarma ve kentsel arama konularında eğitimler verir. Tüm faaliyetler gönüllülük esasıyla yürütülür.</p>
+    <p>AKUT Arama Kurtarma Derneği, 1996 yılında Türkiye'de kurulan, kâr amacı gütmeyen bir kuruluştur. Tamamen gönüllülerden oluşan dernek, doğal afet ve kazalarda arama kurtarma operasyonları yürütmektedir.</p>
+    <p>AKUT uzman gönüllüler yetiştirmekte; ilk yardım, dağ kurtarma, su kurtarma ve kentsel arama konularında eğitimler vermektedir. Tüm faaliyetler gönüllülük esasıyla yürütülmektedir.</p>
     <a class="dugme" href="https://www.akut.org.tr">akut.org.tr</a>
   </div>
   <div><img src="img/akut.png" alt="AKUT Arama Kurtarma Derneği logosu"></div>
 </div></section>
 <section id="katkida-bulunanlar" aria-labelledby="katki-baslik"><div class="ic">
   <h2 id="katki-baslik">Katkıda bulunanlar</h2>
-  <p class="alt-baslik">Güvendeyim, AKUT adına gönüllülerin, farklı uzmanlıkların ve kurumsal destekçilerin katkılarıyla gelişir.</p>
+  <p class="alt-baslik">Güvendeyim, AKUT adına gönüllülerin, farklı uzmanlıkların ve kurumsal destekçilerin katkılarıyla gelişmektedir.</p>
   <div class="metin">
-    <p>Projenin ilk fikrini, dönemin AKUT Bilgi Teknolojileri Birim Sorumlusu <strong><a href="https://www.linkedin.com/in/ozgur-celik-89569917/">Özgür Çelik</a></strong> ortaya koydu. AKUT üyesi <strong><a href="https://www.linkedin.com/in/bmericc">Bahri Meriç Canlı</a></strong>, Genel Bilgi Teknolojileri döneminde proje koordinasyonunu üstlendi; daha sonra ana geliştirici oldu ve bugün de uygulamanın geliştirilmesini ve bakımını sürdürür.</p>
-    <p>Aralık 2019’da Android ve iOS kullanıcılarıyla buluşan Güvendeyim, yıllar içinde yeni cihazlara ve dillere genişledi. AKUT’un proje koordinasyonu, yazılım, içerik ve tanıtım katkıları bugün de devam eder.</p>
+    <p>Projenin ilk fikrini, dönemin AKUT Bilgi Teknolojileri Birim Sorumlusu <strong><a href="https://www.linkedin.com/in/ozgur-celik-89569917/">Özgür Çelik</a></strong> ortaya koydu. AKUT üyesi <strong><a href="https://www.linkedin.com/in/bmericc">Bahri Meriç Canlı</a></strong>, Genel Bilgi Teknolojileri döneminde proje koordinasyonunu üstlendi; daha sonra ana geliştirici oldu ve bugün de uygulamanın geliştirilmesini ve bakımını sürdürmektedir.</p>
+    <p>Aralık 2019’da Android ve iOS kullanıcılarıyla buluşan Güvendeyim, yıllar içinde yeni cihazlara ve dillere genişledi. AKUT’un proje koordinasyonu, yazılım, içerik ve tanıtım katkıları bugün de devam etmektedir.</p>
   </div>
   <div class="izgara">
-    <div class="kart"><h3>Yazılım geliştirme</h3><p><strong><a href="https://www.linkedin.com/in/mremre/">Emre Olgun</a></strong>, Genel Bilgi Teknolojileri adına ilk Android ve iOS uygulamalarını geliştirdi; sonraki özelliklere ve 2021’de Huawei platform desteğine katkı sundu. Bahri Meriç Canlı, ana geliştirici olarak uygulamaları, ortak dil altyapısını, buluşma noktalarını ve web projelerini geliştirir.</p></div>
+    <div class="kart"><h3>Yazılım geliştirme</h3><p><strong><a href="https://www.linkedin.com/in/mremre/">Emre Olgun</a></strong>, Genel Bilgi Teknolojileri adına ilk Android ve iOS uygulamalarını geliştirdi; sonraki özelliklere ve 2021’de Huawei platform desteğine katkı sundu. Bahri Meriç Canlı, ana geliştirici olarak uygulamaları, ortak dil altyapısını, buluşma noktalarını ve web projelerini geliştirmektedir.</p></div>
     <div class="kart"><h3>Görsel tasarım</h3><p><strong><a href="https://www.linkedin.com/in/emrullahyigin/">Emrullah YIGIN</a></strong>, AKUT Tasarım Birimi adına Güvendeyim’in logosu dahil tüm görsel ihtiyaçlarını karşıladı.</p></div>
-    <div class="kart"><h3>İçerik ve tanıtım</h3><p><strong>AKUT Seminer Birimi</strong> uygulamanın içeriklerini sağlar. <strong>AKUT Kurumsal İletişim Birimi</strong> tanıtım çalışmalarını yürütür.</p></div>
+    <div class="kart"><h3>İçerik ve tanıtım</h3><p><strong>AKUT Seminer Birimi</strong> uygulamanın içeriklerini sağlamaktadır. <strong>AKUT Kurumsal İletişim Birimi</strong> tanıtım çalışmalarını yürütmektedir.</p></div>
   </div>
 </div></section>
 <section class="gri" aria-labelledby="destek-baslik"><div class="ic">
@@ -209,7 +209,7 @@ PAGES["hakkinda.html"] = ("Hakkında – Güvendeyim",
 <section class="gri"><div class="ic"><div class="izgara">
   <div class="kart"><h3>Gizlilik</h3><p>Uygulama üyelik istemez. Kişileriniz, mesajınız ve buluşma noktalarınız telefonunuzda saklanır.</p><a class="devam" href="https://www.akut.org.tr/guvendeyim-uygulamasi-gizlilik-politikasi">Gizlilik politikası →</a></div>
   <div class="kart"><h3>İletişim</h3><p>Soru, öneri ve hata bildirimleri için bize yazın.</p><a class="devam" href="mailto:guvendeyim@akut.org.tr">guvendeyim@akut.org.tr →</a></div>
-  <div class="kart"><h3>Açık veri</h3><p>Buluşma noktası önerileri OpenStreetMap verisinden üretilir ve açık lisansla yayınlanır.</p><a class="devam" href="https://github.com/guvendeyim/bulusma-noktalari">Kaynak ve veri →</a></div>
+  <div class="kart"><h3>Açık veri</h3><p>Buluşma noktası önerileri OpenStreetMap verisinden üretilmekte ve açık lisansla yayınlanmaktadır.</p><a class="devam" href="https://github.com/guvendeyim/bulusma-noktalari">Kaynak ve veri →</a></div>
 </div></div></section></main>""")
 
 PAGES["indir.html"] = ("İndir – Güvendeyim",
