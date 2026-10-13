@@ -179,6 +179,33 @@ PAGES["hakkinda.html"] = ("Hakkında – Güvendeyim",
   </div>
   <div><img src="img/akut.png" alt="AKUT Arama Kurtarma Derneği logosu"></div>
 </div></section>
+<section id="katkida-bulunanlar" aria-labelledby="katki-baslik"><div class="ic">
+  <h2 id="katki-baslik">Katkıda bulunanlar</h2>
+  <p class="alt-baslik">Güvendeyim, AKUT adına gönüllülerin, farklı uzmanlıkların ve kurumsal destekçilerin katkılarıyla gelişir.</p>
+  <div class="metin">
+    <p>Projenin ilk fikrini, dönemin AKUT Bilgi Teknolojileri Birim Sorumlusu <strong><a href="https://www.linkedin.com/in/ozgur-celik-89569917/">Özgür Çelik</a></strong> ortaya koydu. AKUT üyesi <strong><a href="https://www.linkedin.com/in/bmericc">Bahri Meriç Canlı</a></strong>, Genel Bilgi Teknolojileri döneminde proje koordinasyonunu üstlendi; daha sonra ana geliştirici oldu ve bugün de uygulamanın geliştirilmesini ve bakımını sürdürür.</p>
+    <p>Aralık 2019’da Android ve iOS kullanıcılarıyla buluşan Güvendeyim, yıllar içinde yeni cihazlara ve dillere genişledi. AKUT’un proje koordinasyonu, yazılım, içerik ve tanıtım katkıları bugün de devam eder.</p>
+  </div>
+  <div class="izgara">
+    <div class="kart"><h3>Yazılım geliştirme</h3><p><strong><a href="https://www.linkedin.com/in/mremre/">Emre Olgun</a></strong>, Genel Bilgi Teknolojileri adına ilk Android ve iOS uygulamalarını geliştirdi; sonraki özelliklere ve 2021’de Huawei platform desteğine katkı sundu. Bahri Meriç Canlı, ana geliştirici olarak uygulamaları, ortak dil altyapısını, buluşma noktalarını ve web projelerini geliştirir.</p></div>
+    <div class="kart"><h3>Görsel tasarım</h3><p><strong><a href="https://www.linkedin.com/in/emrullahyigin/">Emrullah YIGIN</a></strong>, AKUT Tasarım Birimi adına Güvendeyim’in logosu dahil tüm görsel ihtiyaçlarını karşıladı.</p></div>
+    <div class="kart"><h3>İçerik ve tanıtım</h3><p><strong>AKUT Seminer Birimi</strong> uygulamanın içeriklerini sağlar. <strong>AKUT Kurumsal İletişim Birimi</strong> tanıtım çalışmalarını yürütür.</p></div>
+  </div>
+</div></section>
+<section class="gri" aria-labelledby="destek-baslik"><div class="ic">
+  <h2 id="destek-baslik">Kurumsal destek</h2>
+  <p class="alt-baslik">Güvendeyim’in farklı dönemlerinde Genel Bilgi Teknolojileri, Huawei Türkiye ve Amazon AWS projeye destek verdi.</p>
+  <div class="izgara">
+    <div class="kart"><h3>Genel Bilgi Teknolojileri</h3><p>İlk uygulamaların geliştirilmesine destek verdi. Bu dönemde Bahri Meriç Canlı proje koordinasyonunu yürütürken Emre Olgun şirket adına Android ve iOS geliştirmelerini gerçekleştirdi.</p></div>
+    <div class="kart"><h3>Huawei Türkiye</h3><p>Güvendeyim’in AppGallery’de yer almasına ve dönemin Huawei akıllı saatlerine entegre edilmesine destek verdi. <strong><a href="https://www.linkedin.com/in/sabrina-cara-01054a15a/">Sabrina Cara</a></strong>, Huawei Türkiye adına 2021’de saat entegrasyonu, GT3 uyumluluğu, konum ve SMS geliştirmelerine katkı sundu. Watch GT2 Pro ve Watch GT3 desteği 2022’de duyuruldu.</p><a class="devam" href="https://www.huawei.com/tr/news/2022/akut-guvendeyim-uygulamasi-huawei-ile-artik-bileginizde">Huawei’nin duyurusu →</a></div>
+    <div class="kart"><h3>Amazon AWS ve Sufle’nin katkısı</h3><p>Amazon AWS, 6 Şubat 2023 depremlerinin ardından uygulamanın artan kullanımını karşılamasına ve internet üzerinden SMS gönderimine destek verdi. Bu kapsamda <strong>Sufle</strong> teknik katkı sundu; <strong><a href="https://www.linkedin.com/in/gizemgur/">Gizem Gür</a></strong>, Sufle adına Android ve iOS SMS entegrasyonunu gerçekleştirdi. Bu destek, projenin o dönemdeki çalışmalarının bir parçasıdır.</p><a class="devam" href="https://www.aboutamazon.co.uk/news/community/how-amazon-is-helping-communities-impacted-by-the-earthquake-in-turkey">Amazon’un açıklaması →</a></div>
+  </div>
+</div></section>
+<section aria-labelledby="tesekkur-baslik"><div class="ic metin">
+  <h2 id="tesekkur-baslik">Teşekkürler</h2>
+  <p>Güvendeyim’in 2019’da başlayan yolculuğunda görev yapan AKUT Yönetim Kurulu başkanları <strong><a href="https://www.hurriyet.com.tr/gundem/akutun-guvendeyim-uygulamasina-depremden-sonra-ilgi-41433594">Recep Şalcı</a>, <a href="https://www.adjustbrand.com/soylesiler/is-dunyasindaki-profesyonellerin-gonullu-olarak-katilimi-cok-onemli/">Zeynep Yosun Akverdi</a>, Barış Altan Doğan ve Serhat Akbel</strong>, projeye kişisel olarak da destek verdiler. Kendilerine ve Güvendeyim’e emek veren tüm gönüllülere teşekkür ederiz.</p>
+  <p>Buluşma noktası önerilerinin açık coğrafi verilerini sağlayan <a href="https://www.openstreetmap.org/copyright">OpenStreetMap katkıcılarına</a> da teşekkür ederiz.</p>
+</div></section>
 <section class="gri"><div class="ic"><div class="izgara">
   <div class="kart"><h3>Gizlilik</h3><p>Uygulama üyelik istemez. Kişileriniz, mesajınız ve buluşma noktalarınız telefonunuzda saklanır.</p><a class="devam" href="https://www.akut.org.tr/guvendeyim-uygulamasi-gizlilik-politikasi">Gizlilik politikası →</a></div>
   <div class="kart"><h3>İletişim</h3><p>Soru, öneri ve hata bildirimleri için bize yazın.</p><a class="devam" href="mailto:guvendeyim@akut.org.tr">guvendeyim@akut.org.tr →</a></div>
