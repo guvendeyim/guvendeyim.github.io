@@ -22,7 +22,7 @@ MENU = [
 ]
 
 STORES = """<div class="magazalar">
-  <a class="magaza" href="https://apps.apple.com/tr/app/id1488896334"><small>iPhone için</small><b>App Store</b></a>
+  <a class="magaza" href="https://apps.apple.com/tr/app/g%C3%BCvendeyim/id1488896334"><small>iPhone için</small><b>App Store</b></a>
   <a class="magaza" href="https://play.google.com/store/apps/details?id=genel.akut.guvendeyim"><small>Android için</small><b>Google Play</b></a>
   <a class="magaza" href="https://appgallery.huawei.com/app/C102224999"><small>Huawei için</small><b>AppGallery</b></a>
 </div>"""
