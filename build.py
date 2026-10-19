@@ -22,12 +22,21 @@ MENU = [
 ]
 
 STORES = """<div class="magazalar">
-  <a class="magaza" href="https://apps.apple.com/tr/app/g%C3%BCvendeyim/id1488896334"><small>iPhone için</small><b>App Store</b></a>
-  <a class="magaza" href="https://play.google.com/store/apps/details?id=genel.akut.guvendeyim"><small>Android için</small><b>Google Play</b></a>
-  <a class="magaza" href="https://appgallery.huawei.com/app/C102224999"><small>Huawei için</small><b>AppGallery</b></a>
+  <a class="magaza" href="https://apps.apple.com/tr/app/g%C3%BCvendeyim/id1488896334"><small>iPhone için</small><b class="notranslate">App Store</b></a>
+  <a class="magaza" href="https://play.google.com/store/apps/details?id=genel.akut.guvendeyim"><small>Android için</small><b class="notranslate">Google Play</b></a>
+  <a class="magaza" href="https://appgallery.huawei.com/app/C102224999"><small>Huawei için</small><b class="notranslate">AppGallery</b></a>
 </div>"""
 
 SUGGESTIONS_URL = "https://www.guvendeyim.org.tr/bulusma-noktalari/"
+
+# Dil seçici: sayfalar Türkçe yazılır, başka dil seçilince Google Çeviri ile makineyle çevrilir.
+# Google'ın betiği yalnızca ziyaretçi bir dil seçtiğinde yüklenir (googtrans çerezi).
+LANGUAGES = [
+    ("tr", "Türkçe"), ("en", "English"), ("de", "Deutsch"), ("az", "Azərbaycanca"),
+    ("fa", "فارسی"), ("ar", "العربية"), ("ru", "Русский"),
+    ("uk", "Українська"), ("fr", "Français"), ("es", "Español"),
+]
+LANGUAGE_OPTIONS = "".join(f'<option value="{code}" lang="{code}">{label}</option>' for code, label in LANGUAGES)
 
 
 def card(title, text, link=None, label=None):
@@ -50,13 +59,18 @@ PAGES["index.html"] = ("Güvendeyim – Afet anında tek tuşla haber verin",
     "AKUT'un ücretsiz Güvendeyim uygulaması: afet ve acil durumda tek tuşla yakınlarınıza konumunuzu SMS ile bildirin.",
     f"""<div class="kahraman"><div class="ic">
   <div>
-    <h1>Afet anında tek tuşla “Güvendeyim” deyin.</h1>
+    <h1>Afet anında tek tuşla <span class="vurgu">“Güvendeyim”</span> deyin.</h1>
     <p>Güvendeyim, acil durumda yakınlarınıza nerede olduğunuzu bildirir: tek tuşla, konumunuzla birlikte, en fazla 10 kişiye SMS gider. AKUT tarafından geliştirilmiştir ve ücretsizdir.</p>
     {STORES}
   </div>
   <div class="gorsel"><img src="img/icon.png" alt="Güvendeyim uygulama simgesi: birbirini tutan iki el"></div>
 </div></div>
-<main><section><div class="ic">
+<main><section aria-labelledby="video-baslik"><div class="ic">
+  <h2 id="video-baslik">Tanıtım videosu</h2>
+  <p class="alt-baslik">Güvendeyim'in nasıl kullanıldığını AKUT'un tanıtım videosundan izleyin.</p>
+  <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/pXO9Wrw-71I" title="Güvendeyim Uygulaması | AKUT" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+</div></section>
+<section class="gri"><div class="ic">
   <div class="izgara">
     {card("Neler yapar?", "Tek tuşla konumlu SMS, düdük, bildirimler ve internet olmadan okunabilen afet rehberleri.", "ozellikler.html", "Özellikler")}
     {card("Nasıl çalışır?", "Kurulum birkaç dakika sürer: adınızı ve en fazla 10 acil kişiyi ekleyin, soluk gri düğme kırmızıya dönsün.", "nasil-calisir.html", "Adım adım")}
@@ -249,7 +263,8 @@ def render(name, title, description, body, base="", head=""):
 {head}</head>
 <body>
 <header class="ust"><div class="ic">
-  <a class="marka" href="{base}index.html"><img src="{base}img/icon.png" alt=""><strong>Güvendeyim</strong></a>
+  <a class="marka notranslate" href="{base}index.html"><img src="{base}img/icon.png" alt=""><strong>Güvendeyim</strong></a>
+  <select class="dil notranslate" id="dil" aria-label="Dil / Language">{LANGUAGE_OPTIONS}</select>
   <button class="menu-dugme" type="button" aria-expanded="false" aria-controls="ana-menu">Menü</button>
   <nav id="ana-menu" aria-label="Ana menü">{nav}</nav>
 </div></header>
@@ -269,6 +284,34 @@ document.documentElement.classList.remove("betiksiz");
   dugme.addEventListener("click", function () {{
     var acik = menu.classList.toggle("acik");
     dugme.setAttribute("aria-expanded", acik);
+  }});
+}})();
+(function () {{
+  var secim = document.getElementById("dil");
+  var m = document.cookie.match(/(?:^|; )googtrans=\\/tr\\/([^;]+)/);
+  var dil = m ? decodeURIComponent(m[1]) : "tr";
+  secim.value = dil;
+  if (dil !== "tr") {{
+    document.documentElement.lang = dil;
+    if (dil === "ar" || dil === "fa") document.documentElement.dir = "rtl";
+    window.googleTranslateElementInit = function () {{
+      new google.translate.TranslateElement({{ pageLanguage: "tr", autoDisplay: false }}, "google_translate_element");
+    }};
+    var kutu = document.createElement("div");
+    kutu.id = "google_translate_element";
+    document.body.appendChild(kutu);
+    var betik = document.createElement("script");
+    betik.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    document.body.appendChild(betik);
+  }}
+  function cerez(deger, yasam) {{
+    var alanlar = ["", "; domain=" + location.hostname, "; domain=." + location.hostname.replace(/^www\\./, "")];
+    alanlar.forEach(function (alan) {{ document.cookie = "googtrans=" + deger + "; path=/" + alan + yasam; }});
+  }}
+  secim.addEventListener("change", function () {{
+    if (secim.value === "tr") cerez("", "; expires=Thu, 01 Jan 1970 00:00:00 GMT");
+    else cerez("/tr/" + secim.value, "");
+    location.reload();
   }});
 }})();
 </script>
