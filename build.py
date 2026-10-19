@@ -59,7 +59,7 @@ PAGES["index.html"] = ("Güvendeyim – Afet anında tek tuşla haber verin",
 <main><section><div class="ic">
   <div class="izgara">
     {card("Neler yapar?", "Tek tuşla konumlu SMS, düdük, bildirimler ve internet olmadan okunabilen afet rehberleri.", "ozellikler.html", "Özellikler")}
-    {card("Nasıl çalışır?", "Kurulum birkaç dakika sürer: adınızı ve en fazla 10 acil kişiyi ekleyin, düğme yeşile dönsün.", "nasil-calisir.html", "Adım adım")}
+    {card("Nasıl çalışır?", "Kurulum birkaç dakika sürer: adınızı ve en fazla 10 acil kişiyi ekleyin, soluk gri düğme kırmızıya dönsün.", "nasil-calisir.html", "Adım adım")}
     {card("Buluşma noktası", "Ailenizle bir asıl, bir yedek buluşma noktası belirleyin ve tek bağlantıyla paylaşın.", "bulusma-noktasi.html", "Nasıl seçilir")}
     {card("Afete hazırlık", "Deprem, sel ve yangında ne yapılır, acil durum çantasına ne konur.", "afete-hazirlik.html", "Rehberler")}
   </div>
@@ -80,13 +80,13 @@ PAGES["ozellikler.html"] = ("Özellikler – Güvendeyim",
 </div></div></section></main>""")
 
 PAGES["nasil-calisir.html"] = ("Nasıl çalışır – Güvendeyim",
-    "Güvendeyim nasıl kurulur ve kullanılır: ayarları açın, kişilerinizi ekleyin, acil durumda yeşil düğmeye basın.",
+    "Güvendeyim nasıl kurulur ve kullanılır: ayarları açın, kişilerinizi ekleyin, acil durumda kırmızı düğmeye basın.",
     page_head("Nasıl çalışır?", "Kurulum birkaç dakika sürer ve bir kez yapılır. Afetten önce yapın.") + """
 <main><section class="gri"><div class="ic">
   <ol class="adimlar">
     <li><h3>Ayarları açın</h3><p>Adınızı, telefon numaranızı ve en fazla 10 acil kişiyi ekleyin.</p></li>
-    <li><h3>Kaydedin</h3><p>Bilgileriniz kaydedilince ana ekrandaki düğme yeşile döner.</p></li>
-    <li><h3>Acil durumda basın</h3><p>Yeşil düğmeye basın; uygulama konumunuzu tüm kişilerinize SMS ile gönderir.</p></li>
+    <li><h3>Kaydedin</h3><p>Bilgileriniz kaydedilince ana ekrandaki soluk gri düğme kırmızıya döner.</p></li>
+    <li><h3>Acil durumda basın</h3><p>Kırmızı düğmeye basın; uygulama konumunuzu tüm kişilerinize SMS ile gönderir.</p></li>
     <li><h3>Yakınlarınız görür</h3><p>Kişileriniz adınızı, numaranızı, konumunuzu ve harita bağlantısını içeren mesajı alır.</p></li>
     <li><h3>Düdük</h3><p>Düdük düğmesiyle acil durumda kendinizi duyurabilirsiniz.</p></li>
   </ol>
@@ -160,7 +160,7 @@ PAGES["afete-hazirlik.html"] = ("Afete hazırlık – Güvendeyim",
   <p class="alt-baslik">Çantanızı önceden hazırlayın. Acil durumda dakikalar içinde tahliye etmeniz gerekebilir.</p>
   <div class="izgara">
     {checklist("Tıbbi malzeme", ["İlk yardım çantası", "Reçeteli ilaçlar (en az 7 günlük)", "Ağrı kesici ve ateş düşürücü", "Bandaj malzemesi ve antiseptik", "Tek kullanımlık eldiven"])}
-    {checklist("Su ve gıda", ["Kişi başı en az 3 litre su", "Uzun ömürlü gıda (konserve, granola, kuru meyve)", "Konserve açacağı", "Su arıtma tableti"])}
+    {checklist("Su ve gıda", ["Yeteri kadar su", "Uzun ömürlü gıda (konserve, granola, kuru meyve)", "Konserve açacağı", "Su arıtma tableti"])}
     {checklist("Önemli belgeler", ["Kimlik / pasaport (fotokopi)", "Sağlık sigortası kartı", "Acil iletişim listesi (basılı)", "Bozuk para ve küçük banknotlar"])}
     {checklist("Ekipman", ["El feneri ve yedek pil", "Düdük", "Isı battaniyesi", "Şarj kablosu ve powerbank", "Yedek kıyafet ve yağmurluk", "Hijyen ürünleri (diş fırçası, sabun, ıslak mendil)"])}
   </div>
@@ -219,7 +219,7 @@ PAGES["indir.html"] = ("İndir – Güvendeyim",
   {STORES}
 </div></section>
 <section class="gri"><div class="ic"><div class="izgara">
-  {card("Kurduktan sonra", "Ayarlar'dan adınızı, numaranızı ve acil kişilerinizi ekleyin; düğme yeşile dönmeden mesaj gönderilemez.", "nasil-calisir.html", "Kurulum adımları")}
+  {card("Kurduktan sonra", "Ayarlar'dan adınızı, numaranızı ve acil kişilerinizi ekleyin; düğme kırmızıya dönmeden mesaj gönderilemez.", "nasil-calisir.html", "Kurulum adımları")}
   {card("Ailenize de kurun", "Uygulama herkesin telefonunda kurulu ve ayarlı olduğunda işe yarar. Buluşma noktanızı da birlikte belirleyin.", "bulusma-noktasi.html", "Buluşma noktası")}
 </div></div></section></main>""")
 
