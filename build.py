@@ -265,6 +265,10 @@ FAQ = [
      "<p>Uygulamayı geliştirebilmek için kimliğinizle ilişkilendirilmeyen kullanım istatistikleri ve hata kayıtları "
      "toplanır. Uygulamayı sildiğinizde telefondaki bilgileriniz de silinir. Ayrıntılar "
      "<a href=\"https://www.akut.org.tr/guvendeyim-uygulamasi-gizlilik-politikasi\">gizlilik politikasında</a>.</p>"),
+    ("Düdük düğmesi telefonu titretiyor da. Bu, şarjımın daha çabuk bitmesine yol açmaz mı?",
+     "<p>Titreşim bilerek eklendi. Arama kurtarma ekiplerinin kullandığı sismik dinleme cihazları, sesten çok "
+     "titreşimi algılar. Enkaz altında sesiniz dışarıya ulaşmasa bile telefonun titreşimi enkaz içinde yayılır ve "
+     "bu cihazlarla algılanabilir. Şarjınızı korumak için düdüğü sürekli değil, aralıklarla çalıştırın.</p>"),
     ("Mesaj AKUT'a ya da 112'ye gider mi?",
      "<p>Hayır. Mesaj yalnızca Ayarlar'da seçtiğiniz en fazla 10 kişiye gider. Hayati tehlikedeyseniz 112'yi arayın.</p>"),
     ("Güvendeyim ücretli mi?",
