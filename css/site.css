@@ -21,8 +21,8 @@ header.ust { background: var(--zemin); color: var(--metin); border-bottom: 1px s
 .ust .ic { display: flex; align-items: center; gap: 12px; padding-top: 14px; padding-bottom: 14px; }
 .ust img { width: 36px; height: 36px; border-radius: 8px; }
 .ust strong { font-size: 19px; flex: 1; }
-.ust nav { display: flex; gap: 20px; }
-.ust nav a { color: var(--metin); text-decoration: none; font-size: 15px; }
+.ust nav { display: flex; gap: 16px; }
+.ust nav a { color: var(--metin); text-decoration: none; font-size: 15px; white-space: nowrap; }
 .ust nav a:hover { color: var(--kirmizi); }
 @media (max-width: 620px) { .ust nav a:not(.kal) { display: none; } }
 
@@ -69,7 +69,7 @@ footer nav { display: flex; flex-wrap: wrap; gap: 8px 20px; }
 .ust nav a[aria-current="page"] { color: var(--kirmizi); font-weight: 700; text-decoration: underline; text-underline-offset: 6px; }
 .ust .marka { display: flex; align-items: center; gap: 12px; flex: 1; color: var(--metin); text-decoration: none; }
 .menu-dugme { display: none; }
-@media (max-width: 860px) {
+@media (max-width: 1060px) {
   .ust .ic { flex-wrap: wrap; row-gap: 0; }
   .menu-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; border: 1px solid var(--cizgi); border-radius: 10px; background: transparent; color: var(--metin); font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; }
   .menu-dugme::before { content: ""; width: 18px; height: 12px; border-top: 2px solid currentColor; border-bottom: 2px solid currentColor; background: linear-gradient(currentColor, currentColor) center / 100% 2px no-repeat; }
@@ -95,7 +95,6 @@ a.devam:hover { text-decoration: underline; }
 .liste li { margin: 4px 0; }
 .kart .liste { margin-top: 4px; }
 .acil { display: inline-block; background: var(--kirmizi); color: #fff; font-weight: 700; border-radius: 10px; padding: 8px 16px; margin-bottom: 20px; }
-.metin { max-width: 68ch; }
 .metin p { margin: 0 0 14px; }
 
 /* Buluşma noktası önerileri sayfası (bulusma-noktalari deposu) */
@@ -109,7 +108,7 @@ a.devam:hover { text-decoration: underline; }
 .oneriler a { flex: none; font-weight: 600; text-decoration: none; }
 .oneriler a:hover { text-decoration: underline; }
 .kaynak { margin: 20px 0 0; color: var(--soluk); font-size: 15px; }
-.video { position: relative; aspect-ratio: 16 / 9; max-width: 860px; border-radius: 16px; overflow: hidden; background: #000; }
+.video { position: relative; aspect-ratio: 16 / 9; border-radius: 16px; overflow: hidden; background: #000; }
 .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 /* Dil seçici; Google Çeviri'nin kendi çubuğu ve vurguları gizlenir. */
 .dil { min-height: 40px; padding: 0 10px; font: inherit; font-size: 15px; color: var(--metin); background: var(--zemin); border: 1px solid var(--cizgi); border-radius: 10px; cursor: pointer; }
@@ -117,10 +116,21 @@ a.devam:hover { text-decoration: underline; }
 #google_translate_element, iframe.skiptranslate, .goog-te-banner-frame { display: none !important; }
 body { top: 0 !important; }
 .goog-text-highlight { background: none !important; box-shadow: none !important; }
-@media (max-width: 860px) {
+@media (max-width: 1060px) {
   .ust .marka { min-width: 0; }
   .ust .marka strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .dil { max-width: 112px; }
 }
 /* Dar ekranda menü düğmesi yalnız simge olur; ad ekran okuyucuya kalır. */
 @media (max-width: 420px) { .menu-dugme { font-size: 0; gap: 0; padding: 0 12px; } .ust .marka strong { font-size: 17px; } .ust .ic { gap: 10px; } }
+/* Sıkça sorulan sorular: açılır kapanır kutular. */
+.sss { display: grid; gap: 12px; }
+.sss details { background: var(--kart); border-radius: 14px; }
+.sss summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 20px; font-weight: 600; font-size: 18px; }
+.sss summary::-webkit-details-marker { display: none; }
+.sss summary::after { content: "+"; flex: none; font-size: 24px; line-height: 1; color: var(--kirmizi); }
+.sss details[open] summary::after { content: "−"; }
+.sss summary:focus-visible { outline: 2px solid var(--kirmizi); outline-offset: 2px; border-radius: 14px; }
+.sss .cevap { padding: 0 20px 18px; color: var(--soluk); }
+.sss .cevap p { margin: 0 0 10px; }
+.sss .cevap p:last-child { margin-bottom: 0; }

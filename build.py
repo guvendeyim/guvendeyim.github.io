@@ -13,13 +13,18 @@ with open("css/site.css", "rb") as _css:
 
 MENU = [
     ("index.html", "Ana sayfa"),
-    ("ozellikler.html", "Özellikler"),
     ("nasil-calisir.html", "Nasıl çalışır"),
     ("bulusma-noktasi.html", "Buluşma noktası"),
     ("afete-hazirlik.html", "Afete hazırlık"),
+    ("sikca-sorulan-sorular.html", "Sıkça Sorulan Sorular"),
     ("hakkinda.html", "Hakkında"),
     ("indir.html", "İndir"),
 ]
+
+# Kaldırılan sayfaların eski bağlantıları yeni sayfaya yönlenir.
+REDIRECTS = {
+    "ozellikler.html": "nasil-calisir.html",
+}
 
 STORES = """<div class="magazalar">
   <a class="magaza" href="https://apps.apple.com/tr/app/g%C3%BCvendeyim/id1488896334"><small>iPhone için</small><b class="notranslate">App Store</b></a>
@@ -72,31 +77,19 @@ PAGES["index.html"] = ("Güvendeyim – Afet anında tek tuşla haber verin",
 </div></section>
 <section class="gri"><div class="ic">
   <div class="izgara">
-    {card("Neler yapar?", "Tek tuşla konumlu SMS, düdük, bildirimler ve internet olmadan okunabilen afet rehberleri.", "ozellikler.html", "Özellikler")}
+    {card("Neler yapar?", "Tek tuşla konumlu SMS, düdük, bildirimler ve internet olmadan okunabilen afet rehberleri.", "nasil-calisir.html", "Özellikler")}
     {card("Nasıl çalışır?", "Kurulum birkaç dakika sürer: adınızı ve en fazla 10 acil kişiyi ekleyin, soluk gri düğme kırmızıya dönsün.", "nasil-calisir.html", "Adım adım")}
     {card("Buluşma noktası", "Ailenizle bir asıl, bir yedek buluşma noktası belirleyin ve tek bağlantıyla paylaşın.", "bulusma-noktasi.html", "Nasıl seçilir")}
     {card("Afete hazırlık", "Deprem, sel ve yangında ne yapılır, acil durum çantasına ne konur.", "afete-hazirlik.html", "Rehberler")}
   </div>
 </div></section></main>""")
 
-PAGES["ozellikler.html"] = ("Özellikler – Güvendeyim",
-    "Güvendeyim uygulamasının özellikleri: tek tuşla konumlu SMS, 10 acil kişi, düdük, afet rehberleri, buluşma noktaları, altı dil.",
-    page_head("Özellikler", "Afet ve acil durumda en çok ihtiyaç duyulan şeyi, haber vermeyi, mümkün olduğunca basit hale getirir.") + f"""
-<main><section><div class="ic"><div class="izgara">
-  {card("Tek tuşla haber", "Ana ekrandaki düğmeye basın; adınız, telefonunuz, konumunuz ve harita bağlantısı kayıtlı kişilerinize SMS olarak gider.")}
-  {card("10 acil kişi", "Mesajın gideceği en fazla 10 kişiyi önceden rehberinizden seçersiniz. Acil anda kimseyi aramanız gerekmez.")}
-  {card("Düdük", "Sesinizi duyuramadığınızda düdük düğmesiyle bulunduğunuz yeri belli edebilirsiniz.")}
-  {card("Bildirimler", "AKUT'un duyuruları uygulamaya bildirim olarak gelir ve sonradan okunmak üzere listede saklanır.")}
-  {card("Temel bilgiler", "Deprem, sel ve yangında ne yapılır, acil durum çantasına ne konur: internet olmadan da okunabilen kısa rehberler.", "afete-hazirlik.html", "Rehberlere bakın")}
-  {card('Buluşma noktaları <span class="etiket">Yeni</span>', "Ailenizle bir asıl, bir yedek buluşma noktası belirleyin; haritadan seçin, tek bağlantıyla paylaşın. Yeni sürümle geliyor.", "bulusma-noktasi.html", "Ayrıntılar")}
-  {card("Altı dil", "Türkçe, İngilizce, Almanca, Azerbaycan Türkçesi, Farsça ve Arapça. Acil numaralar seçtiğiniz ülkeye göre gösterilir.")}
-  {card("Üyelik yok", "Hesap açmanız ya da giriş yapmanız gerekmez. Bilgileriniz telefonunuzda kalır.")}
-</div></div></section></main>""")
-
 PAGES["nasil-calisir.html"] = ("Nasıl çalışır – Güvendeyim",
-    "Güvendeyim nasıl kurulur ve kullanılır: ayarları açın, kişilerinizi ekleyin, acil durumda kırmızı düğmeye basın.",
-    page_head("Nasıl çalışır?", "Kurulum birkaç dakika sürer ve bir kez yapılır. Afetten önce yapın.") + """
+    "Güvendeyim nasıl kurulur ve kullanılır, neler yapar: tek tuşla konumlu SMS, 10 acil kişi, düdük, afet rehberleri, buluşma noktaları, altı dil.",
+    page_head("Nasıl çalışır?", "Kurulum birkaç dakika sürer ve bir kez yapılır. Afetten önce yapın.") + f"""
 <main><section class="gri"><div class="ic">
+  <h2>Adım adım</h2>
+  <p class="alt-baslik">Afet ve acil durumda en çok ihtiyaç duyulan şeyi, haber vermeyi, mümkün olduğunca basit hale getirir.</p>
   <ol class="adimlar">
     <li><h3>Ayarları açın</h3><p>Adınızı, telefon numaranızı ve en fazla 10 acil kişiyi ekleyin.</p></li>
     <li><h3>Kaydedin</h3><p>Bilgileriniz kaydedilince ana ekrandaki soluk gri düğme kırmızıya döner.</p></li>
@@ -105,7 +98,21 @@ PAGES["nasil-calisir.html"] = ("Nasıl çalışır – Güvendeyim",
     <li><h3>Düdük</h3><p>Düdük düğmesiyle acil durumda kendinizi duyurabilirsiniz.</p></li>
   </ol>
 </div></section>
-<section><div class="ic">
+<section id="ozellikler"><div class="ic">
+  <h2>Özellikler</h2>
+  <p class="alt-baslik">Uygulamanın yaptığı her şey, kısaca.</p>
+  <div class="izgara">
+  {card("Tek tuşla haber", "Ana ekrandaki düğmeye basın; adınız, telefonunuz, konumunuz ve harita bağlantısı kayıtlı kişilerinize SMS olarak gider.")}
+  {card("10 acil kişi", "Mesajın gideceği en fazla 10 kişiyi önceden rehberinizden seçersiniz. Acil anda kimseyi aramanız gerekmez.")}
+  {card("Düdük", "Sesinizi duyuramadığınızda düdük düğmesiyle bulunduğunuz yeri belli edebilirsiniz.")}
+  {card("Bildirimler", "AKUT'un duyuruları uygulamaya bildirim olarak gelir ve sonradan okunmak üzere listede saklanır.")}
+  {card("Temel bilgiler", "Deprem, sel ve yangında ne yapılır, acil durum çantasına ne konur: internet olmadan da okunabilen kısa rehberler.", "afete-hazirlik.html", "Rehberlere bakın")}
+  {card('Buluşma noktaları <span class="etiket">Yeni</span>', "Ailenizle bir asıl, bir yedek buluşma noktası belirleyin; haritadan seçin, tek bağlantıyla paylaşın. Yeni sürümle geliyor.", "bulusma-noktasi.html", "Ayrıntılar")}
+  {card("Altı dil", "Türkçe, İngilizce, Almanca, Azerbaycan Türkçesi, Farsça ve Arapça. Acil numaralar seçtiğiniz ülkeye göre gösterilir.")}
+  {card("Üyelik yok", "Hesap açmanız ya da giriş yapmanız gerekmez. Bilgileriniz telefonunuzda kalır.")}
+</div>
+</div></section>
+<section class="gri"><div class="ic">
   <h2>Uygulamanın hazır kalması için</h2>
   <p class="alt-baslik">Acil durum uygulaması en gerektiği anda çalışmalıdır. Kurduktan sonra şunlara dikkat edin.</p>
   <div class="izgara">
@@ -113,6 +120,7 @@ PAGES["nasil-calisir.html"] = ("Nasıl çalışır – Güvendeyim",
     <div class="kart"><h3>iPhone</h3><p>iPhone, yer açmak için uzun süre kullanılmayan uygulamaları kaldırabilir; internet yokken uygulama yeniden indirilemez. Ayarlar'da App Store bölümünden “Kullanılmayan Uygulamaları Kaldır” seçeneğini kapatın.</p></div>
     <div class="kart"><h3>Android ve Huawei</h3><p>Telefonunuz uzun süre kullanılmayan uygulamaları uyutabilir, izinlerini kaldırabilir ya da arşivleyebilir. Telefon ayarlarından Güvendeyim için bu özellikleri kapatın ve uygulamayı ara sıra açın.</p></div>
   </div>
+  <p class="kaynak">Aklınıza takılan başka bir şey varsa <a href="sikca-sorulan-sorular.html">Sıkça Sorulan Sorular</a> sayfasına bakın.</p>
 </div></section></main>""")
 
 PAGES["bulusma-noktasi.html"] = ("Buluşma noktası – Güvendeyim",
@@ -239,6 +247,105 @@ PAGES["indir.html"] = ("İndir – Güvendeyim",
 </div></div></section></main>""")
 
 
+# Sıkça sorulan sorular: (soru, cevap). Cevaplar HTML olabilir; arama motorları için etiketsiz hali
+# sayfaya FAQPage yapılandırılmış verisi olarak da eklenir.
+FAQ = [
+    ("Neden “Güvende değilim” düğmesi yok? Acil durumda aileme durumumu nasıl bildiririm?",
+     "<p>Güvendeyim, afetten sonra yakınlarınıza hızlıca “iyiyim” diyebilmeniz ve hatların gereksiz aramalarla "
+     "tıkanmaması için tasarlandı. Mesaj yalnızca sizin seçtiğiniz kişilere gider; AKUT'a, 112'ye ya da kurtarma "
+     "ekiplerine ulaşmaz. “Güvende değilim” diye bir mesaj da yardım çağırmazdı; yardım için doğru yol 112'dir.</p>"
+     "<p>Yardıma ihtiyacınız varsa önce <strong>112</strong>'yi arayın. Yakınlarınıza durumunuzu bildirmek için "
+     "Güvendeyim düğmesine yine basabilirsiniz: mesajda konumunuz ve harita bağlantısı olduğu için yakınlarınız "
+     "nerede olduğunuzu bilir ve yetkililere iletebilir. iPhone'da mesaj, göndermeden önce ekranda açılır; "
+     "“yaralıyım” ya da “enkaz altındayım” gibi bir not ekleyebilirsiniz. Sesinizi duyuramıyorsanız düdük düğmesini kullanın.</p>"),
+    ("Kişisel verilerimi saklıyor musunuz?",
+     "<p>Uygulama üyelik istemez. Adınız, telefon numaranız, acil kişileriniz, mesajınız ve buluşma noktalarınız "
+     "yalnızca telefonunuzda saklanır; AKUT'a gönderilmez. Konumunuz da AKUT'a gitmez: yalnızca düğmeye bastığınızda, "
+     "mesajın içinde seçtiğiniz kişilere SMS ile gider.</p>"
+     "<p>Uygulamayı geliştirebilmek için kimliğinizle ilişkilendirilmeyen kullanım istatistikleri ve hata kayıtları "
+     "toplanır. Uygulamayı sildiğinizde telefondaki bilgileriniz de silinir. Ayrıntılar "
+     "<a href=\"https://www.akut.org.tr/guvendeyim-uygulamasi-gizlilik-politikasi\">gizlilik politikasında</a>.</p>"),
+    ("Mesaj AKUT'a ya da 112'ye gider mi?",
+     "<p>Hayır. Mesaj yalnızca Ayarlar'da seçtiğiniz en fazla 10 kişiye gider. Hayati tehlikedeyseniz 112'yi arayın.</p>"),
+    ("Güvendeyim ücretli mi?",
+     "<p>Uygulama ücretsizdir. Mesajlar sizin hattınızdan normal SMS olarak gider; ücreti operatörünüzün tarifesine "
+     "göredir, paketinizde SMS varsa oradan düşer.</p>"),
+    ("İnternet olmadan çalışır mı?",
+     "<p>Evet. SMS mobil şebeke üzerinden gider, konumunuz GPS ile bulunur; ikisi için de internet gerekmez. "
+     "İnternet yokken konumun bulunması biraz daha uzun sürebilir. Afet rehberleri de internetsiz okunur.</p>"),
+    ("Şebeke yoksa ne olur?",
+     "<p>Şebeke yoksa SMS gönderilemez. Şebekenin çektiği bir yere, mümkünse açık alana geçip düğmeye yeniden basın.</p>"),
+    ("Mesajı alacak kişilerin de uygulamayı kurması gerekir mi?",
+     "<p>Hayır. Mesaj normal SMS olarak gelir; her telefonda okunur. Yine de ailenizin her bireyinin kendi "
+     "telefonuna kurması, herkesin haber verebilmesi için önerilir.</p>"),
+    ("Mesajda neler yazar? Metni değiştirebilir miyim?",
+     "<p>Mesajda adınız, telefon numaranız, mesajınız, konumunuz ve harita bağlantısı bulunur. Mesaj metnini "
+     "Ayarlar'dan değiştirebilirsiniz.</p>"),
+    ("Kaç kişiye mesaj gönderebilirim?", "<p>En fazla 10 kişiye. Kişileri önceden rehberinizden seçersiniz.</p>"),
+    ("Düğme neden gri, mesaj neden gitmiyor?",
+     "<p>Adınız, telefon numaranız ya da acil kişileriniz henüz kaydedilmemiştir. Ayarlar'dan bilgileri girip "
+     "kaydedin; düğme kırmızıya döner. <a href=\"nasil-calisir.html\">Kurulum adımları</a></p>"),
+    ("iPhone'da neden “Gönder”e basmam gerekiyor?",
+     "<p>Apple, uygulamaların kendi başına SMS göndermesine izin vermez. Güvendeyim mesajı ve alıcıları hazırlayıp "
+     "mesaj ekranını açar, siz “Gönder”e basarsınız. Android ve Huawei telefonlarda mesaj doğrudan gönderilir.</p>"),
+    ("Konumum bulunamazsa ne olur?",
+     "<p>Konum birkaç saniye içinde bulunamazsa mesaj konumsuz da gönderilebilir. Konum izni verdiğinizden emin "
+     "olun; açık alanda konum daha hızlı bulunur.</p>"),
+    ("Hangi telefonlarda çalışır?",
+     "<p>iOS 13 ve üstü iPhone'larda, Android 7.0 ve üstü telefonlarda ve Google hizmetleri olmayan Huawei "
+     "telefonlarda (AppGallery) çalışır. <a href=\"indir.html\">İndirme bağlantıları</a></p>"),
+    ("Hangi dillerde kullanılabilir?",
+     "<p>Türkçe, İngilizce, Almanca, Azerbaycan Türkçesi, Farsça ve Arapça. Acil numaralar dile göre değil, "
+     "Ayarlar'da seçtiğiniz ülkeye göre gösterilir.</p>"),
+    ("Buluşma noktasını ailemle nasıl paylaşırım?",
+     "<p>Uygulamada buluşma noktalarınızı seçip paylaş düğmesine basın; bir bağlantı oluşur. Bağlantıyı açan kişinin "
+     "telefonunda Güvendeyim kuruluysa noktalar uygulamada açılır, kurulu değilse uygulamayı indirme sayfası gösterilir. "
+     "<a href=\"bulusma-noktasi.html\">Buluşma noktası nasıl seçilir</a></p>"),
+    ("Telefonumu değiştirirsem bilgilerim taşınır mı?",
+     "<p>Bilgileriniz yalnızca telefonunuzda saklandığı için yeni telefonda Ayarlar'ı yeniden doldurmanız "
+     "gerekebilir. Kurduktan sonra düğmenin kırmızı olduğunu kontrol edin.</p>"),
+    ("Hata ya da öneriyi nereye bildiririm?",
+     "<p><a href=\"mailto:guvendeyim@akut.org.tr\">guvendeyim@akut.org.tr</a> adresine yazın.</p>"),
+]
+
+
+def faq_schema():
+    import html, json, re
+    def plain(text):
+        return html.unescape(re.sub(r"<[^>]+>", " ", text)).split()
+    items = [{"@type": "Question", "name": q,
+              "acceptedAnswer": {"@type": "Answer", "text": " ".join(plain(a))}} for q, a in FAQ]
+    data = json.dumps({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": items},
+                      ensure_ascii=False).replace("</", "<\\/")
+    return f'<script type="application/ld+json">{data}</script>\n'
+
+
+PAGES["sikca-sorulan-sorular.html"] = ("Sıkça Sorulan Sorular – Güvendeyim",
+    "Güvendeyim hakkında sıkça sorulan sorular: neden “Güvende değilim” düğmesi yok, kişisel veriler saklanıyor mu, "
+    "internetsiz çalışır mı, SMS ücretli mi.",
+    page_head("Sıkça Sorulan Sorular", "Bize en çok sorulanlar. Cevabını bulamadığınız soruyu "
+              '<a href="mailto:guvendeyim@akut.org.tr">guvendeyim@akut.org.tr</a> adresine yazın.') +
+    '\n<main><section><div class="ic"><div class="sss">\n' +
+    "".join(f'  <details><summary>{q}</summary><div class="cevap">{a}</div></details>\n' for q, a in FAQ) +
+    "</div></div></section></main>")
+PAGE_HEAD = {"sikca-sorulan-sorular.html": faq_schema()}
+
+
+def redirect_page(target):
+    return f"""<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Güvendeyim</title>
+<link rel="canonical" href="https://www.guvendeyim.org.tr/{target}">
+<meta name="robots" content="noindex">
+<meta http-equiv="refresh" content="0; url={target}">
+</head>
+<body><p><a href="{target}">Sayfa taşındı: {target}</a></p></body>
+</html>
+"""
+
+
 def render(name, title, description, body, base="", head=""):
     """base: bağlantı öneki; site kökü dışındaki sayfalar için "/". head: sayfaya özgü <head> etiketleri."""
     def link(href, label):
@@ -355,6 +462,10 @@ def write_suggestions_page():
 if __name__ == "__main__":
     for name, (title, description, body) in PAGES.items():
         with open(name, "w", encoding="utf-8") as f:
-            f.write(render(name, title, description, body))
+            f.write(render(name, title, description, body, head=PAGE_HEAD.get(name, "")))
         print("yazıldı:", name)
+    for name, target in REDIRECTS.items():
+        with open(name, "w", encoding="utf-8") as f:
+            f.write(redirect_page(target))
+        print("yönlendirme:", name, "→", target)
     write_suggestions_page()
