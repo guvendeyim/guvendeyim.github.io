@@ -319,9 +319,7 @@ def faq_schema():
         return html.unescape(re.sub(r"<[^>]+>", " ", text)).split()
     items = [{"@type": "Question", "name": q,
               "acceptedAnswer": {"@type": "Answer", "text": " ".join(plain(a))}} for q, a in FAQ]
-    data = json.dumps({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": items},
-                      ensure_ascii=False).replace("</", "<\\/")
-    return f'<script type="application/ld+json">{data}</script>\n'
+    return {"@type": "FAQPage", "mainEntity": items}
 
 
 PAGES["sikca-sorulan-sorular.html"] = ("Sıkça Sorulan Sorular – Güvendeyim",
@@ -332,7 +330,56 @@ PAGES["sikca-sorulan-sorular.html"] = ("Sıkça Sorulan Sorular – Güvendeyim"
     '\n<main><section><div class="ic"><div class="sss">\n' +
     "".join(f'  <details><summary>{q}</summary><div class="cevap">{a}</div></details>\n' for q, a in FAQ) +
     "</div></div></section></main>")
-PAGE_HEAD = {"sikca-sorulan-sorular.html": faq_schema()}
+
+
+# Arama sonuçlarında zengin görünüm için yapılandırılmış veri (schema.org, JSON-LD) ve kanonik adresler.
+SITE = "https://www.guvendeyim.org.tr/"
+ORGANIZATION = {"@type": "NGO", "@id": "https://www.akut.org.tr/#org", "name": "AKUT Arama Kurtarma Derneği",
+                "alternateName": "AKUT", "url": "https://www.akut.org.tr/", "logo": SITE + "img/akut.png",
+                "email": "guvendeyim@akut.org.tr", "foundingDate": "1996"}
+WEBSITE = {"@type": "WebSite", "@id": SITE + "#site", "name": "Güvendeyim", "alternateName": "IamSafe",
+           "url": SITE, "inLanguage": "tr", "publisher": {"@id": ORGANIZATION["@id"]}}
+APPLICATION = {"@type": "MobileApplication", "@id": SITE + "#app", "name": "Güvendeyim", "alternateName": "IamSafe",
+               "url": SITE, "image": SITE + "img/icon.png", "operatingSystem": "iOS 13+, Android 7.0+",
+               "applicationCategory": "UtilitiesApplication",
+               "description": "Afet ve acil durumda tek tuşla yakınlarınıza konumunuzu SMS ile bildiren ücretsiz uygulama.",
+               "inLanguage": ["tr", "en", "de", "az", "fa", "ar"],
+               "offers": {"@type": "Offer", "price": "0", "priceCurrency": "TRY"},
+               "author": {"@id": ORGANIZATION["@id"]}, "publisher": {"@id": ORGANIZATION["@id"]},
+               "downloadUrl": ["https://apps.apple.com/tr/app/g%C3%BCvendeyim/id1488896334",
+                               "https://play.google.com/store/apps/details?id=genel.akut.guvendeyim",
+                               "https://appgallery.huawei.com/app/C102224999"]}
+MENU_LABELS = dict(MENU)
+
+
+def page_url(name):
+    return SITE if name == "index.html" else SITE + name
+
+
+def breadcrumb(items):
+    """items: [(ad, adres), ...], ana sayfa hariç."""
+    trail = [("Ana sayfa", SITE)] + items
+    return {"@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": i, "name": label, "item": url} for i, (label, url) in enumerate(trail, 1)]}
+
+
+def json_ld(*nodes):
+    import json
+    data = json.dumps({"@context": "https://schema.org", "@graph": list(nodes)}, ensure_ascii=False, indent=1)
+    return '<script type="application/ld+json">' + data.replace("</", "<\\/") + "</script>\n"
+
+
+def page_schema(name):
+    if name == "index.html":
+        return json_ld(WEBSITE, ORGANIZATION, APPLICATION)
+    nodes = [breadcrumb([(MENU_LABELS[name], page_url(name))])]
+    if name == "sikca-sorulan-sorular.html":
+        nodes.append(faq_schema())
+    if name == "indir.html":
+        nodes.append(APPLICATION)
+    if name == "hakkinda.html":
+        nodes.append(ORGANIZATION)
+    return json_ld(*nodes)
 
 
 def redirect_page(target):
@@ -350,8 +397,10 @@ def redirect_page(target):
 """
 
 
-def render(name, title, description, body, base="", head=""):
-    """base: bağlantı öneki; site kökü dışındaki sayfalar için "/". head: sayfaya özgü <head> etiketleri."""
+def render(name, title, description, body, base="", head="", url=None):
+    """base: bağlantı öneki; site kökü dışındaki sayfalar için "/". head: sayfaya özgü <head> etiketleri.
+    url: sayfanın kanonik adresi (verilmezse adından çıkarılır)."""
+    url = url or page_url(name)
     def link(href, label):
         current = ' aria-current="page"' if href == name else ""
         return f'<a href="{base}{href}"{current}>{label}</a>'
@@ -376,7 +425,15 @@ def render(name, title, description, body, base="", head=""):
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{description}">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://www.guvendeyim.org.tr/img/icon.png">
+<meta property="og:url" content="{url}">
+<meta property="og:site_name" content="Güvendeyim">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:image" content="{SITE}img/icon.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:image:alt" content="Güvendeyim uygulama simgesi">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="{url}">
 <link rel="icon" type="image/png" href="{base}img/favicon.png">
 <link rel="apple-touch-icon" href="{base}img/apple-touch-icon.png">
 <link rel="stylesheet" href="{base}css/site.css?v={CSS_VERSION}">
@@ -459,17 +516,27 @@ def write_suggestions_page():
         f.write(render("bulusma-noktasi.html", "Buluşma noktası önerileri — Güvendeyim",
                        "Afet sonrası ailenizle buluşabileceğiniz açık alanlar: il ve ilçeye göre park, meydan, "
                        "pazar yeri, spor sahası ve oyun alanı önerileri.",
-                       body, base="/", head=SUGGESTIONS_HEAD))
+                       body, base="/", url=SUGGESTIONS_URL,
+                       head=SUGGESTIONS_HEAD + json_ld(breadcrumb([
+                           (MENU_LABELS["bulusma-noktasi.html"], page_url("bulusma-noktasi.html")),
+                           ("Öneriler", SUGGESTIONS_URL)]))))
     print("yazıldı:", target)
 
 
 if __name__ == "__main__":
     for name, (title, description, body) in PAGES.items():
         with open(name, "w", encoding="utf-8") as f:
-            f.write(render(name, title, description, body, head=PAGE_HEAD.get(name, "")))
+            f.write(render(name, title, description, body, head=page_schema(name)))
         print("yazıldı:", name)
     for name, target in REDIRECTS.items():
         with open(name, "w", encoding="utf-8") as f:
             f.write(redirect_page(target))
         print("yönlendirme:", name, "→", target)
     write_suggestions_page()
+    with open("sitemap.xml", "w", encoding="utf-8") as f:
+        urls = [page_url(name) for name in PAGES] + [SUGGESTIONS_URL]
+        f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+                + "".join(f"  <url><loc>{u}</loc></url>\n" for u in urls) + "</urlset>\n")
+    with open("robots.txt", "w", encoding="utf-8") as f:
+        f.write(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}sitemap.xml\n")
+    print("yazıldı: sitemap.xml, robots.txt")

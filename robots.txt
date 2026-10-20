@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.guvendeyim.org.tr/sitemap.xml
