@@ -1,0 +1,32 @@
+# AKUT Güvendeyim
+
+> Güvendeyim (IamSafe), afet ve acil durumlarda kullanıcıların güvende olduklarını ve konumlarını önceden seçtikleri yakınlarına SMS ile bildirmelerine yardımcı olan ücretsiz AKUT uygulamasıdır. Bu site uygulamanın tanıtım, kullanım, indirme ve sıkça sorulan sorular kaynağıdır.
+
+Resmi site: https://www.guvendeyim.org.tr/ (guvendeyim.org.tr bu adrese yönlendirilir).
+
+Uygulama iPhone, Android ve Huawei telefonlarda kullanılabilir; üyelik veya giriş gerektirmez. Türkçe, İngilizce, Almanca, Azerbaycan Türkçesi, Farsça ve Arapça dil desteği sunar.
+
+## Kullanım hakkında temel bilgiler
+
+- Kullanıcı adını, telefon numarasını ve en fazla 10 acil kişisini önceden kaydeder. Mesaj seçilen kişilere gönderilir; alıcıların uygulamayı kurması gerekmez.
+- SMS gönderimi için internet gerekmez, ancak mobil şebeke gerekir. Uygulama ücretsizdir; SMS ücretlendirmesi kullanıcının operatör tarifesine bağlıdır.
+- iPhone'da uygulama mesajı ve alıcıları hazırlar; kullanıcı mesaj ekranında Gönder'e basar. Android ve Huawei telefonlarda mesaj doğrudan gönderilir.
+- Konum için konum izni gerekir. Konum bulunamazsa mesaj konumsuz gönderilebilir.
+- Güvendeyim mesajları AKUT'a, 112'ye veya kurtarma ekiplerine gönderilmez; uygulama bir yardım çağırma servisi değildir.
+- Buluşma noktası önerileri OpenStreetMap verilerinden otomatik üretilir. Resmi toplanma alanı listesi veya güvenlik garantisi değildir.
+
+## Temel sayfalar
+
+- [Ana sayfa](https://www.guvendeyim.org.tr/): Uygulamanın amacı ve genel tanıtımı.
+- [Nasıl çalışır?](https://www.guvendeyim.org.tr/nasil-calisir.html): Kurulum, acil kişiler, konumlu SMS, özellikler ve telefon ayarları.
+- [Sıkça sorulan sorular](https://www.guvendeyim.org.tr/sikca-sorulan-sorular.html): İnternetsiz kullanım, şebeke gereksinimi, SMS ücreti, kişisel veriler, platform farkları ve destek.
+- [İndir](https://www.guvendeyim.org.tr/indir.html): App Store, Google Play ve Huawei AppGallery indirme bağlantıları.
+- [Buluşma noktası](https://www.guvendeyim.org.tr/bulusma-noktasi.html): Asıl ve yedek buluşma noktası belirleme ve aileyle paylaşma.
+- [Buluşma noktası önerileri](https://www.guvendeyim.org.tr/bulusma-noktalari/): İl ve ilçeye göre açık alan önerileri ve harita.
+- [Afete hazırlık](https://www.guvendeyim.org.tr/afete-hazirlik.html): Afet hazırlığına ilişkin temel bilgiler ve acil durum çantası.
+- [Hakkında](https://www.guvendeyim.org.tr/hakkinda.html): Projenin geçmişi, AKUT ve katkıda bulunanlar.
+
+## Optional
+
+- [Site haritası](https://www.guvendeyim.org.tr/sitemap.xml): Sitenin sayfa adresleri.
+- [İletişim](mailto:guvendeyim@akut.org.tr): Uygulama hakkında hata bildirimleri ve öneriler.

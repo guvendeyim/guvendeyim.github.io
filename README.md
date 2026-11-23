@@ -5,6 +5,10 @@ Güvendeyim uygulamasının tanıtım sitesi. Yedi sayfa, dış bağımlılık y
 - Yayın: https://guvendeyim.github.io/
 - Buluşma noktası önerileri ayrı depodadır: https://github.com/guvendeyim/bulusma-noktalari
 
+## Yapay zekâ için içerik dizini
+
+`llms.txt`, sitenin özeti ve temel sayfalarının bağlantılarını içerir; `/llms.txt` adresinde statik olarak yayınlanır. `build.py` tarafından üretilmez. Uygulama bilgileri veya sayfa adresleri değiştiğinde bu dosya da güncellenmelidir.
+
 ## Özel alan adı
 
 Site `www.guvendeyim.org.tr` adresinde yayınlanır (`CNAME` dosyası); `guvendeyim.org.tr` oraya yönlendirilir. DNS Cloudflare'dedir: kök alan adı ve
